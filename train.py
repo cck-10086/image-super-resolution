@@ -97,9 +97,8 @@ def parse_args():
     parser.add_argument("--batch_size", type=int, default=16)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--patch_size", type=int, default=96)
-    parser.add_argument("--n_resblocks", type=int, default=32)
-    parser.add_argument("--n_feats", type=int, default=256)
-    parser.add_argument("--res_scale", type=float, default=0.1)
+    parser.add_argument("--n_resblocks", type=int, default=16)
+    parser.add_argument("--n_feats", type=int, default=64)
     parser.add_argument("--save_dir", type=str, default="model_weights")
     parser.add_argument("--save_interval", type=int, default=20)
     parser.add_argument("--lr_step", type=int, default=30)
@@ -137,7 +136,7 @@ def main():
 
     # 模型
     model = EDSR(n_resblocks=args.n_resblocks, n_feats=args.n_feats,
-                 res_scale=args.res_scale, scale=args.scale).to(device)
+                 scale=args.scale).to(device)
 
     n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"[Info] EDSR x{args.scale} parameters: {n_params/1e6:.2f}M")
