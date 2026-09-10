@@ -1,0 +1,10 @@
+flask==2.3.3
+flask-cors==4.0.0
+torch>=2.2.0
+torchvision>=0.17.0
+pillow==10.1.0
+numpy==1.26.2
+psutil==5.9.6
+scikit-image==0.22.0
+opencv-python==4.8.1.78
+urllib3==2.1.0

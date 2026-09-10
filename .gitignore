@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+
+# Project generated
+*.log
+logs/
+uploads/
+outputs/
+test_images/
+_out_rs*.png
+
+# Training dataset (large, do not commit)
+archive/
+data_new/
+
+# Model weights (download/train separately)
+model_weights/
+
+# IDE
+.idea/
+*.iml
+.trae/
+
+# OS
+.DS_Store
+Thumbs.db
+# Raw dataset
+archive/

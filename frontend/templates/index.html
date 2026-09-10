@@ -1,0 +1,114 @@
+﻿﻿﻿﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图像超分辨率放大系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">🖼️</div>
+                    <div class="header-text">
+                        <h1>图像超分辨率放大系统</h1>
+                        <p class="subtitle" id="subtitle">EDSR + Real-ESRGAN</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="status-badge" id="statusBadge">
+                        <span class="status-dot offline"></span>
+                        <span id="statusText">离线</span>
+                    </div>
+                    <div class="device-info" id="deviceInfo"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="panel-left">
+                <div class="upload-section">
+                    <h2>📤 上传图像</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="imageInput" accept="image/*" hidden>
+                        <div class="upload-placeholder" id="uploadPlaceholder">
+                            <p class="upload-icon">📁</p>
+                            <p>拖拽或点击上传</p>
+                            <p class="subtext">支持 PNG / JPG / WebP</p>
+                        </div>
+                        <div class="upload-preview" id="uploadPreview" hidden>
+                            <img id="previewImage" class="preview-image">
+                            <button class="remove-btn" id="removeBtn">✕</button>
+                        </div>
+                    </div>
+                    <div class="file-info" id="fileInfo" hidden>
+                        <span id="fileName"></span>
+                        <span id="fileSize"></span>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h2>⚙️ 放大倍率</h2>
+                    <div class="scale-buttons">
+                        <button class="scale-btn" data-scale="2">
+                            <span class="scale-num">2x</span>
+                            <span class="scale-label">EDSR</span>
+                        </button>
+                        <button class="scale-btn active" data-scale="4">
+                            <span class="scale-num">4x</span>
+                            <span class="scale-label">Real-ESRGAN</span>
+                        </button>
+                        <button class="scale-btn" data-scale="8">
+                            <span class="scale-num">8x</span>
+                            <span class="scale-label">级联增强</span>
+                        </button>
+                    </div>
+                    <button id="processBtn" class="process-btn" disabled>
+                        ⚡ 执行高清重建
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel-right">
+                <div class="comparison-section">
+                    <div class="comparison-card">
+                        <div class="card-header">📥 输入原图</div>
+                        <div class="image-box">
+                            <div id="originalPlaceholder" class="placeholder-text">等待上传</div>
+                            <img id="originalImage" class="result-image" hidden>
+                            <div class="image-info" id="originalInfo" hidden></div>
+                        </div>
+                    </div>
+                    <div class="comparison-card">
+                        <div class="card-header">✨ 超分结果</div>
+                        <div class="image-box">
+                            <div id="enhancedPlaceholder" class="placeholder-text">等待处理</div>
+                            <img id="enhancedImage" class="result-image" hidden>
+                            <div class="loading-overlay" id="loadingOverlay" hidden>
+                                <div class="spinner"></div>
+                                <p id="loadingStatus">处理中...</p>
+                                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                            </div>
+                            <div class="image-info" id="enhancedInfo" hidden></div>
+                        </div>
+                        <a id="downloadBtn" class="download-btn" href="#" download hidden>📥 下载结果</a>
+                    </div>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span>📋 处理日志</span>
+                        <button id="clearTerminal">清空</button>
+                    </div>
+                    <div class="terminal-content" id="terminalContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="toast" hidden></div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
